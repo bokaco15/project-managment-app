@@ -1,0 +1,30 @@
+Assignment - Kreiranje Laravel PHP aplikacije Project Management
+
+Zadatak
+Potrebno je napraviti PHP aplikaciju Project Management, na osnovu primera datih u lekcijama. [DONE - napravljen projekat, objavljen na git]
+
+ Aplikacija treba da omogući:
+ - čuvanje naziva projekta,
+ - opisa projekta
+ - status projekta (aktivan, završen, obrisan)
+ - kao i ime i prezime nadležnog za projekat
+ - zajedno sa datumom početka i datumom završetka projekta.
+ => Zakljucak:
+        - Napraviti model i migraciju Project sa poljima: *projectName, *projectDescription, *projectStatus,
+                                                          *nameAndSurname, *datumPocetka, *datumZavrsetka
+
+
+Stoga je potrebno da se korisničko okruženje sastoji iz sledećih delova:
+    -liste na kojoj će da budu prikazane stavke iz modela ili tabele koje su navedene iznad,
+    -stranice na kojoj ćemo moći uneti projekat zajedno sa navedenim stavkama,
+    -stranice na kojoj ćemo moći urediti već postojeći projekat,
+    -stranice na kojoj ćemo moći obrisati projekat,
+    -stranice na kojoj ćemo moći pregledati zasebno projekat.
+
+Aplikaciju Project Management je potrebno realizovati korišćenjem softverskog okvira Laravel,
+odnosno frameworka koji smo izučavali na ovom kursu.
+Koristeći primere iz poslednje dve lekcije ovog kursa ovaj zadatak možete jednostavno savladati i kreirati.
+Dovoljno je voditi se istom logikom za kreiranje migracije, pogleda, modela i kontrolera,
+te spajanja svih komponenata u jednu.
+
+Napomena: Zadatak je potrebno dostaviti vođi kursa preko e-learning platforme kao zapakovan (zip ili rar) fajl. Treba dostaviti kompletan Laravel projekat, zajedno sa izgrađenim fajlovima za pregled.
