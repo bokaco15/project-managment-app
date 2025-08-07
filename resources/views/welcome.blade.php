@@ -33,7 +33,7 @@
                 <td>{{$project->start}}</td>
                 <td>{{$project->end}}</td>
                 <td>
-                    <a href="/" class="btn btn-primary btn-sm">Show</a>
+                    <a href="{{route('project.show', ['project'=>$project->id])}}" class="btn btn-primary btn-sm">Show</a>
                     <a href="/" class="btn btn-secondary btn-sm">Edit</a>
                     <a href="/" class="btn btn-danger btn-sm">Delete</a>
                 </td>

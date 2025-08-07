@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function show()
+    public function showProjects()
     {
         $projects = Project::all();
 
@@ -25,6 +25,12 @@ class ProjectController extends Controller
         }
 
         return view('welcome', ['projects'=>$projects]);
+    }
+
+    public function show(Project $project)
+    {
+//        dd($project);
+        return view('project-show', compact('project'));
     }
 
 
