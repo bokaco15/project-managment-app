@@ -34,13 +34,19 @@
                 <td>{{$project->end}}</td>
                 <td>
                     <a href="{{route('project.show', ['project'=>$project->id])}}" class="btn btn-primary btn-sm">Show</a>
-                    <a href="/" class="btn btn-secondary btn-sm">Edit</a>
-                    <a href="/" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="{{route('project.edit', ['project'=>$project->id])}}" class="btn btn-secondary btn-sm">Edit</a>
+                    <a onclick="return confirm('Da li ste sigurni da zelite obrisati projekat')" href="{{route('project.delete', ['project'=>$project->id])}}" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
+
+    <br>
+
+    @if(session('success'))
+        <p class="text-success">{{session('success')}}</p>
+    @endif
 
 @endsection
 

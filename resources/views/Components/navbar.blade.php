@@ -5,11 +5,8 @@
             <a href="/" class="text-primary text-decoration-none fst-italic">Project Managment App</a>
         </div>
         <div class="links">
-            <a href="/" class="text-light p-1 text-decoration-none">Home</a>
+            <a href="/" class="text-light p-1 text-decoration-none">All projects</a>
             <a href="{{route('project.page.add')}}" class="text-light p-1 text-decoration-none">Add project</a>
-            <a href="/" class="text-light p-1 text-decoration-none">Home</a>
-            <a href="/" class="text-light p-1 text-decoration-none">Home</a>
-            <a href="/" class="text-light p-1 text-decoration-none">Home</a>
         </div>
     </div>
 
