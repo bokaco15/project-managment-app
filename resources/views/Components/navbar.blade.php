@@ -6,7 +6,7 @@
         </div>
         <div class="links">
             <a href="/" class="text-light p-1 text-decoration-none">Home</a>
-            <a href="/" class="text-light p-1 text-decoration-none">Home</a>
+            <a href="{{route('project.page.add')}}" class="text-light p-1 text-decoration-none">Add project</a>
             <a href="/" class="text-light p-1 text-decoration-none">Home</a>
             <a href="/" class="text-light p-1 text-decoration-none">Home</a>
             <a href="/" class="text-light p-1 text-decoration-none">Home</a>
