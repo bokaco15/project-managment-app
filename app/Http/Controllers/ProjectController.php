@@ -9,7 +9,11 @@ class ProjectController extends Controller
 {
     public function showProjects()
     {
-        $projects = Project::all();
+        $projects = Project::paginate(
+            $perPage=5, $columns=['*'], $pageName='page'
+        ); //To je zapravo Projects:all() i da odradi paginaciju
+
+        if($projects->isEmpty()) return redirect('/');
 
         foreach ($projects as $project)
         {
@@ -24,7 +28,12 @@ class ProjectController extends Controller
             }
         }
 
-        return view('welcome', ['projects'=>$projects]);
+
+        return view('welcome',
+            [
+            'projects'=>$projects,
+                'i'=>(request()->get($pageName, 1)-1) * $perPage  // Ovo mi je kod za ispis rednih brojeva(umesto id)
+            ]);
     }
 
     public function show(Project $project)

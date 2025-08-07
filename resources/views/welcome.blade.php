@@ -25,10 +25,16 @@
         <tbody>
         @foreach($projects as $project)
             <tr>
-                <th scope="row">{{$project->id}}</th>
+                <th scope="row">{{++$i}}</th>
                 <td>{{$project->name}}</td>
                 <td>{{Str::words($project->description, 5,'...')}}</td>
-                <td>{{$project->status}}</td>
+                <td class="
+                    {{ $project->status == 'U toku' ? 'text-primary' : '' }}
+                    {{ $project->status == 'Nije pocelo' ? 'text-warning' : '' }}
+                    {{ $project->status == 'Zavrseno' ? 'text-danger' : '' }}
+                ">
+                    {{ $project->status }}
+                </td>
                 <td>{{$project->personName}}</td>
                 <td>{{$project->start}}</td>
                 <td>{{$project->end}}</td>
@@ -41,6 +47,8 @@
         @endforeach
         </tbody>
     </table>
+
+    {{$projects->links('pagination::bootstrap-5')}}
 
     <br>
 
