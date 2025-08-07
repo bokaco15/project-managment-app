@@ -27,7 +27,7 @@
             <tr>
                 <th scope="row">{{++$i}}</th>
                 <td>{{$project->name}}</td>
-                <td>{{Str::words($project->description, 5,'...')}}</td>
+                <td>{{Str::words($project->description, 3,'...')}}</td>
                 <td class="
                     {{ $project->status == 'U toku' ? 'text-primary' : '' }}
                     {{ $project->status == 'Nije pocelo' ? 'text-warning' : '' }}
