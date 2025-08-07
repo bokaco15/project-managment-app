@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -58,6 +59,9 @@ class ProjectController extends Controller
             'end'=>'required|date'
         ]);
 
+        $validate['slug'] = Project::createUniqueSlug($validate['name'], '-');
+//        dd($validate);
+
         Project::create($validate); //Upisujemo podatke u bazu
 
         return redirect()->route('project.page.add')->with('success', 'Uspesno ste dodali Vas projekat');
@@ -98,6 +102,13 @@ class ProjectController extends Controller
         $project->save();
 
         return redirect()->route('projects.show')->with('success', "Uspijesno ste azurirali projekat: {$project->name}");
+    }
+
+
+    public function showProjectWithSlug(Project $project)
+    {
+//        dd($project);
+        return view('project-show', compact('project'));
     }
 
 }

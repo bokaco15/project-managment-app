@@ -39,7 +39,7 @@
                 <td>{{$project->start}}</td>
                 <td>{{$project->end}}</td>
                 <td>
-                    <a href="{{route('project.show', ['project'=>$project->id])}}" class="btn btn-primary btn-sm">Show</a>
+                    <a href="{{route('project.show', ['project'=>$project->slug])}}" class="btn btn-primary btn-sm">Show</a>
                     <a href="{{route('project.edit', ['project'=>$project->id])}}" class="btn btn-secondary btn-sm">Edit</a>
                     <a onclick="return confirm('Da li ste sigurni da zelite obrisati projekat')" href="{{route('project.delete', ['project'=>$project->id])}}" class="btn btn-danger btn-sm">Delete</a>
                 </td>
