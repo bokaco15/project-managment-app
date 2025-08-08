@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 07, 2025 at 09:02 AM
+-- Generation Time: Aug 08, 2025 at 11:25 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -132,7 +132,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
 (3, '0001_01_01_000002_create_jobs_table', 1),
-(4, '2025_08_06_121042_create_projects_table', 1);
+(4, '2025_08_06_121042_create_projects_table', 1),
+(5, '2025_08_07_110638_add_slug_to_projects', 1);
 
 -- --------------------------------------------------------
 
@@ -158,6 +159,7 @@ DROP TABLE IF EXISTS `projects`;
 CREATE TABLE IF NOT EXISTS `projects` (
   `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` enum('Nije pocelo','U toku','Zavrseno') COLLATE utf8mb4_unicode_ci NOT NULL,
   `personName` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -165,19 +167,26 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `end` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `projects_slug_unique` (`slug`)
 ) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `name`, `description`, `status`, `personName`, `start`, `end`, `created_at`, `updated_at`) VALUES
-(7, 'Studentski Portal', 'Aplikacija za praćenje studentskih obaveza i ocenaa.', 'U toku', 'Marko Markovic', '2025-08-15', '2025-08-29', '2025-08-07 04:04:25', '2025-08-07 06:59:45'),
-(6, 'Web Aplikacija za Salon', 'Razvoj sistema za online rezervaciju termina u salonu lepote.', 'U toku', 'Ana Petrović', '2025-07-15', '2026-01-09', '2025-08-07 04:03:16', '2025-08-07 04:03:16'),
-(8, 'Inventar Magacina', 'Sistem za upravljanje zalihama i evidenciju artikala u magacinu.', 'Nije pocelo', 'Petar Peric', '2025-08-29', '2025-09-27', '2025-08-07 04:04:52', '2025-08-07 07:00:36'),
-(9, 'Mobilna Aplikacija za Fitnes', 'Aplikacija za praćenje treninga i ishrane korisnika.', 'Zavrseno', 'Stefan Stefanovic', '2025-08-06', '2025-08-01', '2025-08-07 04:05:31', '2025-08-07 05:10:52'),
-(10, 'CRM Sistem za Firmu', 'Razvoj sistema za upravljanje klijentima i poslovnim kontaktima.', 'Zavrseno', 'Zdravko Zdravkovic', '2025-08-01', '2025-08-06', '2025-08-07 04:06:04', '2025-08-07 05:15:01');
+INSERT INTO `projects` (`id`, `name`, `slug`, `description`, `status`, `personName`, `start`, `end`, `created_at`, `updated_at`) VALUES
+(12, 'IT Mentorstva platforma', 'it-mentorstva-platforma', 'pravljenje platforme za it mentorstva itd itd', 'U toku', 'Toma Nikolic', '2025-08-31', '2025-11-22', '2025-08-08 09:23:54', '2025-08-08 09:23:54'),
+(2, 'Razvoj web sajta za klijenta A', 'razvoj-web-sajta-klijent-a', 'Izrada responzivnog web sajta za prezentaciju usluga.', 'U toku', 'Marko Marković', '2025-08-05', '2025-08-25', '2025-08-08 11:23:05', '2025-08-08 11:23:05'),
+(3, 'Implementacija CRM sistema', 'implementacija-crm-sistema', 'Postavljanje i prilagođavanje CRM softvera za prodajni tim.', 'Nije pocelo', 'Ana Antić', '2025-08-10', '2025-09-01', '2025-08-08 11:23:05', '2025-08-08 11:23:05'),
+(4, 'Migracija baze podataka', 'migracija-baze-podataka', 'Prebacivanje podataka sa starog MySQL servera na novi.', 'U toku', 'Petar Petrović', '2025-08-07', '2025-08-20', '2025-08-08 11:23:05', '2025-08-08 11:23:05'),
+(5, 'SEO optimizacija sajta', 'seo-optimizacija-sajta', 'Optimizacija sadržaja i strukture sajta radi boljeg rangiranja.', 'Zavrseno', 'Ivana Ilić', '2025-07-15', '2025-08-01', '2025-08-08 11:23:05', '2025-08-08 11:23:05'),
+(6, 'Razvoj mobilne aplikacije', 'razvoj-mobilne-aplikacije', 'Izrada Android i iOS aplikacije za online prodavnicu.', 'Nije pocelo', 'Milan Milić', '2025-08-20', '2025-09-15', '2025-08-08 11:23:05', '2025-08-08 11:23:05'),
+(7, 'Redizajn korisničkog interfejsa', 'redizajn-korisnickog-interfejsa', 'Poboljšanje UX/UI dizajna postojećeg softvera.', 'U toku', 'Jovana Jovanović', '2025-08-06', '2025-08-18', '2025-08-08 11:23:05', '2025-08-08 11:23:05'),
+(8, 'Automatizacija procesa fakturisanja', 'automatizacija-procesa-fakturisanja', 'Uvođenje softverskog rešenja za automatsko izdavanje faktura.', 'Nije pocelo', 'Nenad Nikolić', '2025-08-12', '2025-08-28', '2025-08-08 11:23:05', '2025-08-08 11:23:05'),
+(9, 'Integracija sistema plaćanja', 'integracija-sistema-placanja', 'Dodavanje PayPal i kartičnog plaćanja na e-commerce sajt.', 'Zavrseno', 'Marija Marić', '2025-07-28', '2025-08-05', '2025-08-08 11:23:05', '2025-08-08 11:23:05'),
+(10, 'Izrada internog portala', 'izrada-internog-portala', 'Kreiranje internog portala za zaposlene sa funkcijom chat-a.', 'U toku', 'Aleksandar Aleksić', '2025-08-09', '2025-08-29', '2025-08-08 11:23:05', '2025-08-08 11:23:05'),
+(11, 'Bezbednosna revizija sistema', 'bezbednosna-revizija-sistema', 'Provera sigurnosnih propusta i unapređenje zaštite podataka.', 'Nije pocelo', 'Tamara Tomić', '2025-08-15', '2025-08-30', '2025-08-08 11:23:05', '2025-08-08 11:23:05');
 
 -- --------------------------------------------------------
 
@@ -203,7 +212,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Dkpd7UsRyetgGRu2pqiyse8M9J1evUdE11biSae8', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVm1qYzN2VURLNGRoZW1CUGF4OUw4OHlyY09rY3E2WU5pNXlmeUQ2eCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1754557259);
+('hW2gIbvQyuVZIU3w3eEnssPYYdqJJiG7CpzuczMa', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiU2NxUFN3TXpxd0FJZjFYcEhRUEdONkc4WDRtN3h1YmFLREduZjN6aSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1754652020),
+('F7rrlUXF22sFIPRa2rtvKE0JC8u6bszbRGe6FRou', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRVIyVUZYTThCSTJFYzdHTlhhajUwcXBPZzZGRzVKbWRUVGRXYkt3NyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1754652265);
 
 -- --------------------------------------------------------
 
